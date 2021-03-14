@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Materia</title>
+    <link rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                Bootstrap
+            </a>
+        </div>
+    </nav>
+    <br/>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1>Materias</h1>
+            </div>
+            <div class="col">
+                <a href="/materia/registro" class="link-success"><button type="button" class="btn btn-success">Crear nueva materia</button></a>
+            </div>
+
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr >
+                <th scope="col">ID</th>
+                <th scope="col">Nombre materia</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                    <tr  th:each="m : ${materias}">
+
+                    <th scope="row" th:text="${m.materiaId}"></th>
+                    <td th:text="${m.materiaNombre}"></td>
+                    <td >
+                        <form  th:action="@{'/materia/borrar/' + ${m.materiaId}}"  method="post" >
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <a th:href="@{'/materia/registro?id=' + ${m.materiaId}}"><button type="button" class="btn btn-warning">Modificar</button></a>
+                        </form>
+
+                    </td>
+                    </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+<script src="http://localhost:8080/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

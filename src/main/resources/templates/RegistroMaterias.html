@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title  th:text="${titleMain}"></title>
+    <link rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css">
+</head>
+<body>
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            Bootstrap
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <h1 th:text="${titleMain}"></h1>
+
+    <div class="alert alert-danger" role="alert" th:if="${existeMateria == true}">
+       No existe mateia
+    </div>
+    <form class="form-floating" novalidate th:action="${pathAction}" th:object="${materia}" method="post" >
+        <div class="form-floating mb-3" th:if="${modeUpdate == true}" >
+            <input type="text" class="form-control" id="floatingInputValue1"  th:value="*{materiaId}" disabled>
+            <label for="floatingInputValue1">ID Materia</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputValue" placeholder="Nombre Materia" th:field="*{materiaNombre}" >
+            <span th:if="${#fields.hasErrors('materiaNombre')}" th:errors="*{materiaNombre}"></span>
+            <label for="floatingInputValue">Nombre Materia</label>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success" th:text="${btn1}"></button>
+            <a href="/materia/lista"><button type="button" class="btn btn-danger">Cancelar</button></a>
+        </div>
+
+    </form>
+</div>
+<script src="http://localhost:8080/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

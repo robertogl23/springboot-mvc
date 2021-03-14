@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Usuarios</title>
+    <link rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css">
+</head>
+<body>
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            Bootstrap
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <form class="row g-3 needs-validation" novalidate th:action="@{/profesor/registro}" th:object="${profesor}" method="post">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Nombre</label>
+            <input th:field="*{nombre}" type="text" class="form-control" id="validationCustom01"  required>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+            <div class="valid-feedback"  th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Apellido Paterno</label>
+            <input th:field="*{apellidoP}" type="text" class="form-control" id="validationCustom02"  required>
+            <div class="invalid-feedback">
+                Correcto!!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Apellido Materno</label>
+            <div class="input-group has-validation">
+
+                <input th:field="*{apellidoM}" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Nombre</label>
+            <input th:field="*{email}" type="text" class="form-control" id="validationCustom01"  required>
+            <div class="valid-feedback">
+                Correcto!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Apellido Paterno</label>
+            <input th:field="*{telefono}" type="tel" class="form-control" id="validationCustom02"  required>
+            <div class="valid-feedback">
+                Correcto!!
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+</div>
+<script src="http://localhost:8080/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
